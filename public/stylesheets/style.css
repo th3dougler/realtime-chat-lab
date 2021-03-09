@@ -1,0 +1,11 @@
+#chat-box > div.me > strong{
+  color: red
+}
+
+#chat-box > div > strong{
+  color: blue;
+}
+
+#chat-box > div.me > span{
+  color: gray
+}

@@ -13,7 +13,6 @@ Date.prototype.timeNow = function () {
 let handleInput = null;
 
 socket.on('add-message', function(data){
-    console.log(data);
     let chatBox = document.getElementById('chat-box');
     let newMessage = document.createElement('div');
     if(handleInput.value.toString() == data.handle){
