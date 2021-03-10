@@ -9,3 +9,8 @@
 #chat-box > div.me > span{
   color: gray
 }
+
+#chat-box {
+  height: 70vh;
+  overflow-y: scroll;
+}

@@ -10,14 +10,12 @@ Date.prototype.timeNow = function () {
      return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
 }
 
-let handleInput = null;
 
 socket.on('add-message', function(data){
     let chatBox = document.getElementById('chat-box');
     let newMessage = document.createElement('div');
-    if(handleInput.value.toString() == data.handle){
+    if(data.id == socket.id){
         newMessage.className = "me";
-        console.log("me")
     }else{
         newMessage.className = "not-me";
     }
@@ -25,6 +23,8 @@ socket.on('add-message', function(data){
     chatBox.appendChild(newMessage);
     
 })
+
+let handleInput = null;
 
 document.addEventListener("DOMContentLoaded",function(){
     let inputForm = document.getElementById("input-form");
@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded",function(){
         evt.preventDefault();
         evt.stopPropagation();
         socket.emit('add-message',{
+            id: socket.id,
             handle: handleInput.value.toString(),
             message: messageInput.value.toString(),
             time: new Date().today() + " @ " + new Date().timeNow(),
