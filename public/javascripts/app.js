@@ -9,11 +9,15 @@ Date.prototype.today = function () {
 Date.prototype.timeNow = function () {
      return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
 }
+let chatBox = null;
+let handleInput = null;
+let scrolled = false;
 
 
 socket.on('add-message', function(data){
-    let chatBox = document.getElementById('chat-box');
+
     let newMessage = document.createElement('div');
+    scrolled = false;
     if(data.id == socket.id){
         newMessage.className = "me";
     }else{
@@ -21,15 +25,22 @@ socket.on('add-message', function(data){
     }
     newMessage.innerHTML=`<strong>${data.handle}:</strong> ${data.message}<br/><span class="time">${data.time}</span>`;
     chatBox.appendChild(newMessage);
+    scrollBottom();
     
 })
 
-let handleInput = null;
+
+function scrollBottom(){
+    if (!scrolled){
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+}
 
 document.addEventListener("DOMContentLoaded",function(){
     let inputForm = document.getElementById("input-form");
     let messageInput = document.getElementById('message-input');
     handleInput = document.getElementById('handle-input');
+    chatBox = document.getElementById('chat-box');
 
     inputForm.addEventListener("submit", function(evt){
         evt.preventDefault();
@@ -41,6 +52,10 @@ document.addEventListener("DOMContentLoaded",function(){
             time: new Date().today() + " @ " + new Date().timeNow(),
         })
         return false;
+    })
+    
+    chatBox.addEventListener("scroll", function(evt){
+        scrolled = true;
     })
 })
 
