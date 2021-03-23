@@ -24,13 +24,12 @@
       <h2 class="col s12 center">simpleChat</h2>
     </div> 
     <div class="row">
-      <div class="col s12 m12 l3">
-        <div class="card" id="handle-display-container">
-          <div class="card-content">
-           <strong> Handle: <span id="handle-display" class="red-text"></span></strong>
 
-          </div>
-        </div>
+      <div class="col s10 m10 l9">
+        <div id="chat-box" class="yellow lighten-3 z-depth-1"></div>
+      </div>
+      <div class="col s2 m2 l3">
+
         <div class="card">
           <div class="card-content grey lighten-4">
             <strong>Users:</strong>
@@ -41,25 +40,29 @@
         </div>
 
       </div>
-      <div class="col s12 m12 l9">
-        <div id="chat-box" class="yellow lighten-3 z-depth-1"></div>
-      </div>
     </div>
     <div class="row">
-      <div class="col s9 offset-s3">
-        <form id="input-form">
+      <div class="col s2" id="handle-display-container">
+        <div class="card-content">
+         <strong> Handle: <span id="handle-display" class="red-text"></span></strong>
+
+        </div>
+      </div>
+      <div class="col s7">
+        <form id="input-form" >
           <div class="row">
-            <div class="col s8">
+            <div class="col s11">
               <div class="input-field">
                 <input
                   placeholder="Message text"
                   id="message-input"
                   type="text"
+                  autocomplete="off"
                 />
                 <label for="message-input">Input: </label>
               </div>
             </div>
-            <div class="col s4 input-field">
+            <div class="col s1">
               <button type="submit" class="btn waves-effect waves-light green">
                 <i class="material-icons">add</i>
               </button>
@@ -80,6 +83,7 @@
           type="text"
           pattern="\w{1,12}"
           class="validate"
+          autocomplete="off"
           required
         />
         <label for="message-input">New Handle (A-Z, 0-9, _ {1-12}): </label>

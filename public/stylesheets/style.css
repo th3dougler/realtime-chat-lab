@@ -2,7 +2,7 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-#chat-box > div.me > strong{
+.me > strong{
   color: red
 }
 

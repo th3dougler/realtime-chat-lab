@@ -58,9 +58,10 @@ socket.on('set-users', function(userList){
     while(userListContainer.firstChild){
         userListContainer.removeChild(userListContainer.firstChild)
     }
-    for (user of Object.values(userList)){
+    for (key of Object.keys(userList)){
         let li = document.createElement('li');
-        li.innerHTML = `<strong>${user}</strong>`
+        li.className = (key == socket.id)? "me" : "not-me";
+        li.innerHTML = `<strong>${userList[key]}</strong>`
         userListContainer.appendChild(li);
     }
 })

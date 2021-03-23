@@ -13,6 +13,11 @@ io.on("connection", function(socket){
         userList[data.id] = data.handle;
         io.emit('set-users',userList);
     })
+    
+    socket.on('disconnect', function(data){
+        delete userList[socket.id]
+        io.emit('set-users',userList);  
+    })
 
 })
 
