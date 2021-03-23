@@ -1,14 +1,19 @@
+#chat-box > div.me{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 #chat-box > div.me > strong{
   color: red
+}
+
+#chat-box > div.me > span{
+  color: gray
 }
 
 #chat-box > div > strong{
   color: blue;
 }
 
-#chat-box > div.me > span{
-  color: gray
-}
 
 #chat-box {
   height: 70vh;

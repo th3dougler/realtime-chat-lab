@@ -18,32 +18,49 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
-  <body class="container">
+  <body>
+    <div class="container">
+    <div class="row valign-wrapper">
+      <h2 class="col s12 center">simpleChat</h2>
+    </div> 
     <div class="row">
-      <div class="col s2 z-depth-1">
-        <div class="input-field">
-          <input value="HelloWorld" id="handle-input" type="text" />
-          <label for="handle">Handle: </label>
+      <div class="col s12 m12 l3">
+        <div class="card" id="handle-display-container">
+          <div class="card-content">
+           <strong> Handle: <span id="handle-display" class="red-text"></span></strong>
+
+          </div>
         </div>
+        <div class="card">
+          <div class="card-content grey lighten-4">
+            <strong>Users:</strong>
+            <ul id="user-list-container">
+              
+            </ul>
+          </div>
+        </div>
+
       </div>
-      <div id="chat-box" class="col s9 z-depth-1"></div>
-      <div class="col s9 offset-s2">
-        <form id="input-form" >
-          <div class="row ">
+      <div class="col s12 m12 l9">
+        <div id="chat-box" class="yellow lighten-3 z-depth-1"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s9 offset-s3">
+        <form id="input-form">
+          <div class="row">
             <div class="col s8">
               <div class="input-field">
                 <input
-                  value="Tell other people Hello World"
+                  placeholder="Message text"
                   id="message-input"
                   type="text"
                 />
                 <label for="message-input">Input: </label>
               </div>
             </div>
-            <div class="col s1 input-field">
-              <button type="submit"
-                class="btn waves-effect waves-light green"
-              >
+            <div class="col s4 input-field">
+              <button type="submit" class="btn waves-effect waves-light green">
                 <i class="material-icons">add</i>
               </button>
             </div>
@@ -51,6 +68,33 @@
         </form>
       </div>
     </div>
+  </div>
+  <div id="change-handle" class="modal">
+    <form action="" method="GET" id="handle-form" name="handle-form">
+    <div class="modal-content">
+      <div class="input-field">
+        
+        <input
+          placeholder="Bob Ross"
+          name="handle-input"
+          type="text"
+          pattern="\w{1,12}"
+          class="validate"
+          required
+        />
+        <label for="message-input">New Handle (A-Z, 0-9, _ {1-12}): </label>
+      
+        
+      </div>   
+    </div>
+    <div class="modal-footer">
+      <button type="submit" id="handle-update" class="btn-flat waves-effect waves-light">
+        Submit
+      </button>
+    </div>
+  </form>
+  </div>
+  
     <script src="/socket.io/socket.io.js"></script>
     <script src="/javascripts/app.js"></script>
   </body>
